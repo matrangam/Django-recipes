@@ -1,0 +1,19 @@
+<html>
+  <body>
+
+<h1>{{ object.recipe}}</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url recipe:vote object.id %}" method="post">
+{% csrf_token %}
+{% for ingredients in object.ingredients_set.all %}
+    <input type="radio" name="ingredients" id="ingredients{{ forloop.counter }}" value="{{ ingredients.id }}">
+	<label for="ingredients{{ forloop.counter }}">{{ ingredients.ingredients}}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+  </body>
+</html>
+  
+		

@@ -1,0 +1,14 @@
+<html>
+  <body>
+<h1>{{ object.recipe }}</h1>
+
+<ul>
+	{% for ingredients in object.ingredients_set.all %}
+		<li>{{ ingredients.ingredients }} -- {{ ingredients.votes }} vote{{ ingredients.votes|pluralize }}</li>
+	{% endfor %}
+</ul>
+
+<a href="{% url recipe:detail object.id %}">Vote again?</a>		
+  </body>
+</html>
+  
